@@ -2,13 +2,13 @@
   "id": "cyberpool-4",
   "displayName": "cyberbit like pool",
   "url": "https://mybatch.westeurope.batch.azure.com/pools/cyberpool-4",
-  "eTag": "0x8D5AE06F6CD3281",
-  "lastModified": "2018-04-29T19:25:27.647Z",
+  "eTag": "0x8D5AE13E45DB4AD",
+  "lastModified": "2018-04-29T20:58:00.175Z",
   "creationTime": "2018-04-29T16:28:11.089Z",
   "state": "active",
   "stateTransitionTime": "2018-04-29T16:28:11.089Z",
   "allocationState": "resizing",
-  "allocationStateTransitionTime": "2018-04-29T19:25:27.647Z",
+  "allocationStateTransitionTime": "2018-04-29T20:58:00.175Z",
   "vmSize": "standard_a2m_v2",
   "virtualMachineConfiguration": {
     "imageReference": {
@@ -52,7 +52,7 @@
       },
       {
         "name": "AZ_BATCH_COMMAND",
-        "value": "%AZ_BATCH_APP_PACKAGE_EDR%\\\\EDR.exe /S /hubaddress=10.20.21.23 /DisableRansomwareProtection /RESTART"
+        "value": "%AZ_BATCH_APP_PACKAGE_EDR%\\EDR.exe /S /hubaddress=10.20.21.23 /DisableRansomwareProtection /RESTART"
       }
     ],
     "userIdentity": {

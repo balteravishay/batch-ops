@@ -16,8 +16,9 @@ $batch_key=(get-item env:AZ_BATCH_KEY).Value
 $job_id=(get-item env:AZ_BATCH_JOB_ID).Value
 $node_id=(get-item env:AZ_BATCH_NODE_ID).Value
 $command=(get-item env:AZ_BATCH_COMMAND).Value
+$command = $command.Replace('\', '\\');
 $json = '{"id":"task' + $node_id + '", "commandLine":"cmd /c \"' + $command + '\"","userIdentity":{"autoUser":{"scope":"task","elevationLevel":"admin"}}}' 
-
+Write-Output $json;
 $base_url="https://{0}.{1}.batch.azure.com" -f $batch_account_name, $batch_region
 $path="/jobs/{0}/tasks?api-version=2018-03-01.6.1" -f $job_id
 
