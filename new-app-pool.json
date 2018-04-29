@@ -1,0 +1,77 @@
+{
+  "id": "new-app-pool",
+  "displayName": "pool with application that restarts the VM",
+  "url": "https://mybatch.westeurope.batch.azure.com/pools/new-app-pool",
+  "eTag": "0x8D5AD476B09DE8F",
+  "lastModified": "2018-04-28T20:34:19.288Z",
+  "creationTime": "2018-04-28T09:59:48.646Z",
+  "state": "active",
+  "stateTransitionTime": "2018-04-28T09:59:48.646Z",
+  "allocationState": "steady",
+  "allocationStateTransitionTime": "2018-04-28T20:39:17.763Z",
+  "vmSize": "standard_a2",
+  "virtualMachineConfiguration": {
+    "imageReference": {
+      "publisher": "MicrosoftWindowsServer",
+      "offer": "WindowsServer",
+      "sku": "2012-R2-Datacenter",
+      "version": "latest"
+    },
+    "nodeAgentSKUId": "batch.node.windows amd64"
+  },
+  "resizeTimeout": "PT15M",
+  "currentDedicatedNodes": 0,
+  "currentLowPriorityNodes": 0,
+  "targetDedicatedNodes": 0,
+  "targetLowPriorityNodes": 0,
+  "enableAutoScale": false,
+  "enableInterNodeCommunication": false,
+  "startTask": {
+    "commandLine": "cmd /c @\"%SystemRoot%\\System32\\WindowsPowerShell\\v1.0\\powershell.exe\" -NoProfile -InputFormat None -ExecutionPolicy Bypass -Command \"iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/Azure/batch-insights/master/windows.ps1')) ; cmd /c \"msiexec.exe /i %AZ_BATCH_APP_PACKAGE_AZURECLI%\\azure-cli-2.0.31.msi /norestart /qn \" ; cmd /c \"powershell.exe -file %AZ_BATCH_APP_PACKAGE_REBOOTNODE%\\AddRebootTask.ps1\"",
+    "resourceFiles": [],
+    "environmentSettings": [
+      {
+        "name": "AZ_BATCH_REGION",
+        "value": "westeurope"
+      },
+      {
+        "name": "AZ_BATCH_KEY",
+        "value": "Jy6ZYts8v2SQyTdvKFUThkUav0W+uHSClk9fSN/YA3u7UypnFKyQuigDbxp7wHsGqfC/Pe4SBbbT8Y0RtRtOwQ=="
+      },
+      {
+        "name": "APP_INSIGHTS_APP_ID",
+        "value": "a2faab6d-b602-4076-8f83-69790ec947b6"
+      },
+      {
+        "name": "APP_INSIGHTS_INSTRUMENTATION_KEY",
+        "value": "5bb9c97f-6532-425f-91ca-b8b2b6cce014"
+      },
+      {
+        "name": "AZ_BATCH_JOB_ID",
+        "value": "RestartNodeJob"
+      }
+    ],
+    "userIdentity": {
+      "autoUser": {
+        "scope": "task",
+        "elevationLevel": "admin"
+      }
+    },
+    "maxTaskRetryCount": 0,
+    "waitForSuccess": true
+  },
+  "applicationPackageReferences": [
+    {
+      "applicationId": "azurecli",
+      "version": "1"
+    },
+    {
+      "applicationId": "rebootnode",
+      "version": "1"
+    }
+  ],
+  "maxTasksPerNode": 1,
+  "taskSchedulingPolicy": {
+    "nodeFillType": "Pack"
+  }
+}
